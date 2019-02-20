@@ -24,6 +24,10 @@ typedef struct P2_Grupo{
     char materia[SIZE];
     Horario horarioGrupo[4];
     Estudiante listaEstudiantes[30];
+    float promediogeneral; // Guardara el promedio general del grupo
+    int numReprobados; // Guardara el numero de alumnos reprobados
+    int numAprobados; // Guardara el numero de alumnos aprobados
+
 } Grupo;
 
 
@@ -33,6 +37,9 @@ void Grupo_registrar(Grupo *grupo);
 void Grupo_mostar(Grupo grupo);
 void Grupo_mostarEstudiantes(Grupo grupo);
 void Grupo_registrarEstudiante(Grupo *grupo, Estudiante *alumno);
+// Funcion que calculara el promedio general del grupo, estudiantes aprebados y reprobados.
+float Estadistica_general(grupo * g);
+
 
 //void Grupo_modificar();
 
