@@ -44,6 +44,25 @@ void Grupo_registrarEstudiante(Grupo *grupo, Estudiante *alumno){
     grupo->inscritos++;
 }
 
+//Va a generar el promedio general del grupo, si reprobo o aprobo.
+float Estadistica_general(grupo * g){
+        int i=0;
+        float promGeneral = 0;
+
+        for(i=0 ;i < g->inscritos; i++) {
+                promGeneral += (g->listaEstudiante[i].promedio);
+
+        if(g-> listaEtudiantes[i].promedio<6)
+                g->numReprobados+1;
+        else
+                g->numAprobado+1;
+        }
+
+        promGeneral->promedioneral=promGeneral/inscritos;
+
+        return promGeneral;
+}
+
 /*void Grupo_buscarEstudiante(Grupo *grupo, int boleta){
     int i;
     //for()
