@@ -5,11 +5,11 @@
  **************/
 #include "grupo.h"
 #include <string.h>
+#include <stdio.h>
 
 void Grupo_registrar(Grupo *grupo){
     printf("Ingrese datos del grupo: \n");
     grupo->inscritos = 0;
-    
     printf("Identificador: \n");
     scanf("%s", grupo->identificador);
     printf("Materia: \n");
@@ -45,22 +45,22 @@ void Grupo_registrarEstudiante(Grupo *grupo, Estudiante *alumno){
 }
 
 //Va a generar el promedio general del grupo, si reprobo o aprobo.
-float Estadistica_general(grupo * g){
-        int i=0;
-        float promGeneral = 0;
+float Estadistica_general(Grupo *grupo){
+    float sumaCalificaciones = 0;
+    float promGeneral = 0;
 
-        for(i=0 ;i < g->inscritos; i++) {
-                promGeneral += (g->listaEstudiante[i].promedio);
+    for(int i=0 ;i < grupo->inscritos; i++) {
+        sumaCalificaciones += (grupo->listaEstudiantes[i].promedio);
 
-        if(g-> listaEtudiantes[i].promedio<6)
-                g->numReprobados+1;
-        else
-                g->numAprobado+1;
+        if (grupo->listaEstudiantes[i].promedio<6){
+            grupo->numReprobados = grupo->numReprobados +1;
+        } else {
+            grupo->numAprobados = grupo->numAprobados + 1;
         }
-
-        promGeneral->promedioneral=promGeneral/inscritos;
-
-        return promGeneral;
+    }
+    promGeneral = sumaCalificaciones / grupo->inscritos;
+    grupo->promediogeneral = promGeneral;
+    return promGeneral;
 }
 
 /*void Grupo_buscarEstudiante(Grupo *grupo, int boleta){

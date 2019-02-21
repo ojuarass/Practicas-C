@@ -10,7 +10,7 @@
 #include "common.h"
 #include "estudiante.h"
 
-static const char *tipoHorario[]  = { "teoria  ", "practica", "asesoria"};
+static const char *tipoHorario[]  = { "teoria ", "practica", "asesoria"};
 
 typedef struct  {
     char tipo[TAM]; // teoria, practica o asesoria
@@ -30,19 +30,14 @@ typedef struct P2_Grupo{
 
 } Grupo;
 
-
-
-
 void Grupo_registrar(Grupo *grupo);
 void Grupo_mostar(Grupo grupo);
 void Grupo_mostarEstudiantes(Grupo grupo);
 void Grupo_registrarEstudiante(Grupo *grupo, Estudiante *alumno);
 // Funcion que calculara el promedio general del grupo, estudiantes aprebados y reprobados.
-float Estadistica_general(grupo * g);
-
+float Estadistica_general(Grupo * g);
 
 //void Grupo_modificar();
-
 //void Grupo_buscarEstudiante(Grupo *grupo, int boleta);
 
 #endif

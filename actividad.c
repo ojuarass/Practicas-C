@@ -5,7 +5,7 @@
  **************/
 
 #include "actividad.h"
-
+#include <stdio.h>
 
 void Actividad_registrar(Actividad *nuevaActividad){
     printf("Ingrese datos de la actividad: \n");

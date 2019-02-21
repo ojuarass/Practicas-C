@@ -11,8 +11,13 @@ Descripcion: Creacion y registro de los tipos de datos
 #include <string.h>
 
 /*variables globales*/
-Estudiante e1 = {373494, "Alberto", "Flores", "Ruiz"};
-Estudiante e2;
+Estudiante e1 = {373491, "Alberto", "Flores", "Perez"};
+Estudiante e2 = {373492, "Blanca", "Gomez", "Quiroz"};
+Estudiante e3 = {373493, "Carlos", "Hernandez", "Ruiz"};
+Estudiante e4 = {373494, "Diego", "Islas", "Soto"};
+Estudiante e5 = {373495, "Ernesto", "Juarez", "Trujillo"};
+Estudiante e6 = {373496, "Fabiola", "Lopez", "Valencia"};
+
 Grupo g1, g2;
 
 void registrarAlumnos();

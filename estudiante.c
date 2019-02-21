@@ -30,16 +30,43 @@ void Estudiante_mostrar(Estudiante alumno){
     printf("Nombre: %s %s %s \n", alumno.apPaterno, alumno.apMaterno, alumno.nombre);
 }
 
-//Agregue esta funcion para calcular el promedio de cada estudiante.
-float Calcular_promedio(Estudiante * e){
-        int i = 0;
-        float prom = 0;
-        for(i = 0; i < e->actividadesevaluar;i++) {
-                //Quiero sacar el promedio dependiendo la actividad, pero no se como y donde ponderar el porcentaje de cada actividad.
-        prom = (e->actividadesevaluar[i].calificacion) * (e -> evaluacion[i].actividad.porcentaje);
+void Registrar_Evaluacion(Estudiante *alumno){
+    printf("============== Registrar Evaluaciones ================\n");
+    printf("Calificacion examen: \n");
+    scanf("%f", &alumno->examen.calificacion);
+    printf("Calificacion proyecto: \n");
+    scanf("%f", &alumno->proyecto.calificacion);
+    for(int i = 0; i < 2; i++){
+        printf("Calificacion practica: %d \n", (i+1));
+        scanf("%f", &alumno->practicas[i].calificacion);
+        if(i == 0){
+            int opcion = 0;
+            printf("Desea registrar otra practica: \n1.- Si\n2.- No");
+            scanf("%d", &opcion);
+            if(opcion == 2){
+                alumno->practicas[1].calificacion = 0;
+                break;
+            }
         }
-        e->promedio = prom;
-        return prom;
+    }
+    
 }
-                                                    44,1        Final
+
+//Agregue esta funcion para calcular el promedio de cada estudiante.
+float Calcular_promedio(Estudiante *estudiante){
+    float calificacionExamen;
+    float calificacionProyecto;
+    float calificacionPracticas;
+    
+    calificacionExamen = estudiante->examen.calificacion * 0.4;
+    calificacionProyecto = estudiante->proyecto.calificacion * 0.3;
+    
+    if(estudiante->practicas[1].calificacion == 0){
+        calificacionPracticas = estudiante->practicas[0].calificacion * 0.3;
+    } else {
+        calificacionPracticas = (estudiante->practicas[0].calificacion + estudiante->practicas[1].calificacion) * 0.15;
+    }
+    estudiante->promedio = calificacionExamen + calificacionProyecto + calificacionPracticas;
+    return estudiante->promedio;
+}
 

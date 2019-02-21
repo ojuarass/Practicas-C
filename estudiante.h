@@ -8,25 +8,30 @@ Descripcion: Definicion de la estructura estudiante
 #define ESTUDIANTE_H
 #define SIZE 100
 
+#include "common.h"
+#include "actividad.h"
+
+//Defini la estructura para poder evaluar las actividades.
+typedef struct  {
+    Actividad actividad;
+    float calificacion;
+    char observaciones[TAM];
+} Evaluacion;
+
 typedef struct  {
     int matricula;
     char nombre[SIZE];
     char apPaterno[SIZE];
     char apMaterno[SIZE];
-    evaluacion actividadesevaluar[4]; //Son las 4 actividades que debeevaluar.
+    Evaluacion examen;
+    Evaluacion proyecto;
+    Evaluacion practicas[2];
     float promedio; //tenra el promedio de cada alumno
 } Estudiante;
 
-//Defini la estructura para poder evaluar las actividades.
-typedef struct  {
-     actividad nombredeactividad;
-     float calificacion;
-     char observaciones[TAM];
-}evaluacion;
-
-
 void Estudiante_registrar(Estudiante *alumno);
 void Estudiante_mostrar(Estudiante alumno);
-float Calcular_promedio(Estudiante * e); // Esta funcion servira para calcular el promedio total del alumno.
+void Registrar_Evaluacion(Estudiante *alumno);
+float Calcular_promedio(Estudiante *estudiante); 
 
 #endif
