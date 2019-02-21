@@ -29,6 +29,10 @@ void Grupo_mostar(Grupo grupo){
     for(i= 0; i < 4; i++){
         printf("%s \t\t %s \t\t %s \n", grupo.horarioGrupo[i].tipo, grupo.horarioGrupo[i].dia, grupo.horarioGrupo[i].hora);
     }
+    printf("Numero de estudiantes inscritos: %d\n", grupo.inscritos);
+    printf("Promedio grupal: %f\n", grupo.promediogeneral);
+    printf("Numero de aprobados: %d\n", grupo.numAprobados);
+    printf("Numero de reprobados: %d\n", grupo.numReprobados);
 }
 
 void Grupo_mostarEstudiantes(Grupo grupo){

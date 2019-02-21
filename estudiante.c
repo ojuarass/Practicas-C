@@ -28,10 +28,18 @@ void Estudiante_mostrar(Estudiante alumno){
     printf("============== Datos del estudiante  ================\n");
     printf("Matricula: %d \n", alumno.matricula);
     printf("Nombre: %s %s %s \n", alumno.apPaterno, alumno.apMaterno, alumno.nombre);
+    printf("Calificacion examen: %f\n", alumno.examen.calificacion);
+    printf("Calificacion proyecto: %f\n", alumno.proyecto.calificacion);
+    for(int i = 0; i < 2; i++){
+        printf("Calificacion practica %d: %f\n", (i+1), alumno.practicas[i].calificacion);
+    }
+    printf("Promedio: %f\n",alumno.promedio);
 }
 
 void Registrar_Evaluacion(Estudiante *alumno){
     printf("============== Registrar Evaluaciones ================\n");
+    printf("Matricula: %d \n", &alumno->matricula);
+    printf("Nombre: %s %s %s \n", &alumno->apPaterno, &alumno->apMaterno, &alumno->nombre);
     printf("Calificacion examen: \n");
     scanf("%f", &alumno->examen.calificacion);
     printf("Calificacion proyecto: \n");
@@ -41,7 +49,7 @@ void Registrar_Evaluacion(Estudiante *alumno){
         scanf("%f", &alumno->practicas[i].calificacion);
         if(i == 0){
             int opcion = 0;
-            printf("Desea registrar otra practica: \n1.- Si\n2.- No");
+            printf("Desea registrar otra practica: \n1.- Si\n2.- No\n");
             scanf("%d", &opcion);
             if(opcion == 2){
                 alumno->practicas[1].calificacion = 0;

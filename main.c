@@ -24,30 +24,46 @@ void registrarAlumnos();
 void registrarGrupos();
 void registrarActividades();
 void asociarAlumnoGrupo();
+void obtenerEstadisticaGrupo();
 
 int main(){
     
     registrarAlumnos();
-    getchar();
+    //getchar();
     registrarGrupos();
-    getchar();
+    //getchar();
     registrarActividades();
-    getchar();
+    //getchar();
     asociarAlumnoGrupo();
     getchar();
+    obtenerEstadisticaGrupo();
+    //getchar();
     return 0;
 }
 
 
 void registrarAlumnos(){
-    // Registro Estudiantes
-    e2.matricula = 28498934;
-    strcpy(e2.nombre, "Rosa Maria");
-    strcpy(e2.apPaterno, "Sosa");
-    strcpy(e2.apMaterno, "Gutierrez");
+    
+    Registrar_Evaluacion(&e1);
+    Registrar_Evaluacion(&e2);
+    /*Registrar_Evaluacion(&e3);
+    Registrar_Evaluacion(&e4);
+    Registrar_Evaluacion(&e5);
+    Registrar_Evaluacion(&e6);*/
+    
+    Calcular_promedio(&e1);
+    Calcular_promedio(&e2);
+    /*Calcular_promedio(&e3);
+    Calcular_promedio(&e4);
+    Calcular_promedio(&e5);
+    Calcular_promedio(&e6);*/
     
     Estudiante_mostrar(e1);
     Estudiante_mostrar(e2);
+    /*Estudiante_mostrar(e3);
+    Estudiante_mostrar(e4);
+    Estudiante_mostrar(e5);
+    Estudiante_mostrar(e6);*/
     
 }
 
@@ -103,8 +119,8 @@ void registrarGrupos(){
     strcpy(g2.horarioGrupo[3].dia, dias[2]);
     strcpy(g2.horarioGrupo[3].hora, horarios[3]);
     
-    Grupo_mostar(g1);
-    Grupo_mostar(g2);
+    //Grupo_mostar(g1);
+    //Grupo_mostar(g2);
     
 }
 
@@ -112,10 +128,11 @@ void registrarGrupos(){
 void registrarActividades(){
     int i;
     Actividad a3CV1[] = {{1, "practica1", {"Lunes 5 de febrero", "10:00 am"}}, {2, "practica2",{"Martes 26 de febrero", "10:00 pm"}}, {3, "Examen", "Viernes 1 Marzo", "15:00"}, {4, "proyecto", {"Junio", "12:00"}}};
-   
+   /*
     for(i = 0; i < 4; i++){
         Actividad_mostrar(a3CV1[i]);
     }
+    */
 }
 
 
@@ -125,12 +142,17 @@ void asociarAlumnoGrupo(){
     Grupo_registrarEstudiante(&g1, &e1);
     Grupo_registrarEstudiante(&g1, &e2);
 
-    Grupo_registrarEstudiante(&g2, &e1);
+    //Grupo_registrarEstudiante(&g2, &e1);
     
-    printf("============> Grupo: %s\n", g1.identificador);
-    Grupo_mostarEstudiantes(g1);
+    //printf("============> Grupo: %s\n", g1.identificador);
+    //Grupo_mostarEstudiantes(g1);
     
-    printf("============> Grupo: %s\n", g2.identificador);
-    Grupo_mostarEstudiantes(g2);
+    //printf("============> Grupo: %s\n", g2.identificador);
+    //Grupo_mostarEstudiantes(g2);
+}
+
+void obtenerEstadisticaGrupo(){
+    g1.promediogeneral = Estadistica_general(&g1);
+    Grupo_mostar(g1);
 }
 
